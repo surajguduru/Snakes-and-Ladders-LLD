@@ -1,3 +1,6 @@
+# Snake and Ladder - Class Diagram
+
+```mermaid
 classDiagram
     class Game {
         -Board board
