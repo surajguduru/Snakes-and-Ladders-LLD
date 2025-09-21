@@ -1,10 +1,12 @@
-# Snake and Ladder - Class Diagram
-
-```mermaid
 classDiagram
     class Game {
         -Board board
         -List<Player> players
+        -DiceService diceService
+        -WinStrategy winStrategy
+        -StartStrategy startStrategy
+        -KillStrategy killStrategy
+        -GameStrategy gameStrategy
         +start()
         +makeMove(int diceRoll)
         +checkWinner(Player): boolean
@@ -86,15 +88,15 @@ classDiagram
     class DefaultGameStrategy
 
     %% Relationships
-    Game --> Board
-    Game --> Player
+    Game *-- Board
+    Game *-- Player
+    Game *-- DiceService
     Game --> WinStrategy
     Game --> StartStrategy
     Game --> KillStrategy
     Game --> GameStrategy
-    Game --> DiceService
-    Game *-- GameBuilder
-    Board --> Entity
+    GameBuilder --> Game
+    Board *-- Entity
     Entity <|-- Snake
     Entity <|-- Ladder
     Player <|.. HumanPlayer
