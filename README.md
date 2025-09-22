@@ -25,8 +25,7 @@ classDiagram
         +display(): void
     }
 
-    class Player {
-        <<interface>>
+    class Player <<interface>> {
         +makeMove(int diceRoll): void
         +getLastMoves(): List<Integer>
     }
@@ -60,37 +59,32 @@ classDiagram
         +roll(): int
     }
 
-    class WinStrategy {
-        <<interface>>
+    class WinStrategy <<interface>> {
         +hasWon(Player, int): boolean
     }
 
     class ExactWinStrategy
     class ExceedWinStrategy
 
-    class StartStrategy {
-        <<interface>>
+    class StartStrategy <<interface>> {
         +canStart(Player, int): boolean
     }
 
     class SixStartStrategy
 
-    class KillStrategy {
-        <<interface>>
+    class KillStrategy <<interface>> {
         +handle(Player, List<Player>): void
     }
 
     class CoExistKillStrategy
     class EliminateKillStrategy
 
-    class GameStrategy {
-        <<interface>>
+    class GameStrategy <<interface>> {
         +nextPlayer(List<Player>, Player): Player
     }
 
     class DefaultGameStrategy
 
-    %% Relationships
     Game *-- Board
     Game *-- Player
     Game *-- DiceService
